@@ -4,6 +4,8 @@ import * as passportConfig from '../config/middleware/passport';
 import * as swaggerUi from 'swagger-ui-express';
 import AuthRouter from './AuthRouter';
 import UserRouter from './UserRouter';
+import FlowRouter from './FlowRouter';
+import ParameterRouter from './ParameterRouter';
 let swaggerDoc: Object;
 
 try {
@@ -36,6 +38,20 @@ export function init(app: express.Application): void {
      * @constructs
      */
     app.use('/auth', AuthRouter);
+    
+    /**
+     * @description
+     *  Forwards any requests to the /v1/flows URI to our UserRouter
+     * @constructs
+     */
+    app.use('/v1/flows', FlowRouter);
+
+    /**
+     * @description
+     *  Forwards any requests to the /v1/parameter URI to our UserRouter
+     * @constructs
+     */
+    app.use('/v1/parameter', ParameterRouter);
 
     /**
      * @description
