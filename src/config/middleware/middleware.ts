@@ -10,7 +10,9 @@ import config from '../env/index';
 import * as mongo from 'connect-mongo';
 import { HttpError } from '../error/index';
 import { sendHttpErrorModule } from '../error/sendHttpError';
+import * as logger from '../logger';
 const MongoStore: mongo.MongoStoreFactory = mongo(session);
+
 
 /**
  * @export
@@ -30,7 +32,9 @@ export function configure(app: express.Application): void {
     app.use(helmet());
     // providing a Connect/Express middleware that can be used to enable CORS with various options
     app.use(cors());
-
+    // logger for our app
+    // providing a Connect/Express middleware that can be used to enable CORS with various options
+    
     /**
      * @swagger
      * components:
